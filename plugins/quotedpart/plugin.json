@@ -41,7 +41,7 @@
         "defaultPrompt": [
           "What would this STEP file cost to machine in 6061 aluminum, 25 pieces?",
           "Compare 304 stainless and 6061 for this part at 10 and 100 pieces.",
-          "Which materials can QuotedPart price for CNC turning?"
+          "What's the unit price of this part at 1, 10 and 100 pieces in aluminum?"
         ],
         "brandColor": "#2256F2",
         "composerIcon": "./assets/icon.png",
