@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "quotedpart",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Job-shop price estimates for machined parts from a STEP/IGES model or PDF drawing: cost breakdown, price breaks by quantity and a QuotedPart quote link.",
   "author": {
     "name": "Helios One Oy",
@@ -96,6 +96,7 @@
             }
           ]
         },
+        "demo_recording_url": "https://github.com/Helios-One-Oy/quotedpart-plugins/blob/main/media/demo-claude-code.mp4",
         "commerce": false,
         "commerce_description": "QuotedPart returns price estimates only. It does not sell parts, place orders or process payments."
       },
