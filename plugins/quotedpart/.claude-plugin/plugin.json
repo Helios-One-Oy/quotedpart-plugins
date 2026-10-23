@@ -1,6 +1,6 @@
 {
   "name": "quotedpart",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Job-shop price estimates for machined parts from a STEP/IGES model or PDF drawing: cost breakdown, price breaks by quantity and a QuotedPart quote link.",
   "author": {
     "name": "Helios One Oy",

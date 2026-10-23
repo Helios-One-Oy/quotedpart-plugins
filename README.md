@@ -5,14 +5,14 @@ turned, laser-cut or 3D-printed part from its STEP/IGES model or PDF drawing, ge
 cost breakdown with price breaks by quantity, and open the quote on quotedpart.com.
 
 This repository holds only the plugin packaging. The plugin connects to the hosted QuotedPart MCP
-server at `https://mcp.quotedpart.com/mcp` (Streamable HTTP, no sign-in needed).
+server at `https://quotedpart.com/mcp` (Streamable HTTP, no sign-in needed).
 
 | Assistant | Install |
 | --- | --- |
 | Claude Code | `/plugin marketplace add Helios-One-Oy/quotedpart-plugins` then `/plugin install quotedpart@quotedpart` |
 | Codex | `codex plugin marketplace add Helios-One-Oy/quotedpart-plugins` then `codex plugin add quotedpart@quotedpart` |
-| Claude.ai, ChatGPT | Add `https://mcp.quotedpart.com/mcp` as a custom connector with no authentication |
-| Any MCP client | Streamable HTTP endpoint `https://mcp.quotedpart.com/mcp` |
+| Claude.ai, ChatGPT | Add `https://quotedpart.com/mcp` as a custom connector with no authentication |
+| Any MCP client | Streamable HTTP endpoint `https://quotedpart.com/mcp` |
 
 Details, tools and options: [plugins/quotedpart/README.md](plugins/quotedpart/README.md).
 

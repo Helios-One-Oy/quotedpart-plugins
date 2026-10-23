@@ -3,7 +3,7 @@
   "mcpServers": {
     "quotedpart": {
       "type": "streamable-http",
-      "url": "https://mcp.quotedpart.com/mcp"
+      "url": "https://quotedpart.com/mcp"
     }
   }
 }

@@ -2,7 +2,7 @@
   "mcpServers": {
     "quotedpart": {
       "type": "http",
-      "url": "${QUOTEDPART_MCP_URL:-https://mcp.quotedpart.com/mcp}"
+      "url": "${QUOTEDPART_MCP_URL:-https://quotedpart.com/mcp}"
     }
   }
 }

@@ -28,15 +28,15 @@ codex plugin marketplace add Helios-One-Oy/quotedpart-plugins
 codex plugin add quotedpart@quotedpart
 ```
 
-Or add only the MCP server: `codex mcp add quotedpart --url https://mcp.quotedpart.com/mcp`
+Or add only the MCP server: `codex mcp add quotedpart --url https://quotedpart.com/mcp`
 (see `codex/config.toml`).
 
 ## Claude.ai and ChatGPT (custom connector)
 
 Add the server as a custom connector with no authentication:
 
-- Claude: https://claude.ai/customize/connectors → **Add custom connector** → `https://mcp.quotedpart.com/mcp`
-- ChatGPT: https://chatgpt.com/plugins → **+** → **Add custom MCP server** → `https://mcp.quotedpart.com/mcp`, auth **No authentication**
+- Claude: https://claude.ai/customize/connectors → **Add custom connector** → `https://quotedpart.com/mcp`
+- ChatGPT: https://chatgpt.com/plugins → **+** → **Add custom MCP server** → `https://quotedpart.com/mcp`, auth **No authentication**
 
 ## Tools
 
