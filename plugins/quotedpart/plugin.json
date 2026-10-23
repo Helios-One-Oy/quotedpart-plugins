@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "quotedpart",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Job-shop price estimates for machined parts from a STEP/IGES model or PDF drawing: cost breakdown, price breaks by quantity and a QuotedPart quote link.",
   "author": {
     "name": "Helios One Oy",
@@ -40,7 +40,7 @@
         "termsOfServiceURL": "https://quotedpart.com/terms",
         "defaultPrompt": [
           "What would this STEP file cost to machine in 6061 aluminum, 25 pieces?",
-          "Compare 304 stainless and 6061 for this part at 10 and 100 pieces.",
+          "What would this part cost in 304 stainless at 10 and 100 pieces?",
           "What's the unit price of this part at 1, 10 and 100 pieces in aluminum?"
         ],
         "brandColor": "#2256F2",
@@ -83,16 +83,19 @@
           ],
           "negative": [
             {
-              "description": "No part given",
-              "prompt": "How much does a CNC bracket cost?"
+              "description": "No part given. QuotedPart prices only from a part's STEP/IGES/DXF model or PDF drawing, so it cannot price a part it has not seen.",
+              "prompt": "How much does a CNC bracket cost?",
+              "expected_behavior": "Does not call estimate_price and does not invent a price. Asks for a STEP/IGES/DXF model or PDF drawing (a file or a public link), plus the material and quantity if they are not given."
             },
             {
-              "description": "Not a part file",
-              "prompt": "Price this spreadsheet for me: https://example.com/budget.xlsx"
+              "description": "Not a part file. A spreadsheet is not a STEP, IGES, DXF or PDF file, so there is nothing to measure or price.",
+              "prompt": "Price this spreadsheet for me: https://example.com/budget.xlsx",
+              "expected_behavior": "No price is shown. Either it does not call estimate_price, or the server refuses the .xlsx file and the assistant passes that one-line error on. It asks for a STEP/IGES/DXF model or PDF drawing of the part instead."
             },
             {
-              "description": "Ordering and payment",
-              "prompt": "Order 50 of these brackets from a shop and pay with my card."
+              "description": "Ordering and payment. QuotedPart returns price estimates only; it has no tool to choose a shop, place an order or take payment.",
+              "prompt": "Order 50 of these brackets from a shop and pay with my card.",
+              "expected_behavior": "Calls no tool to order or pay and asks for no card details. Says that QuotedPart only estimates prices and cannot place orders or take payment, and offers to estimate the part if a file is given."
             }
           ]
         },
