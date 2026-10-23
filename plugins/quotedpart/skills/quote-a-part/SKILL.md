@@ -1,20 +1,20 @@
 ---
 name: quote-a-part
-description: Price a CNC machined, turned, laser-cut or 3D-printed part with the QuotedPart tools. Use when someone asks what a part costs to make, wants a quote or price breakdown for a STEP/IGES model or PDF drawing, or compares materials, quantities or shops for a part.
+description: Price a CNC machined, turned, laser-cut or 3D-printed part with the QuotedPart tools, in the person's own QuotedPart shop. Use when someone asks what a part costs to make, wants a quote or price breakdown for a STEP/IGES model or PDF drawing, or compares materials or quantities for a part.
 ---
 
 # Quote a part with QuotedPart
 
 QuotedPart prices parts the way a job shop does, from the 3D model and/or the PDF drawing:
 material, machine time per operation, setups, programming, finishing, extra charges and
-markup, at several quantities. The tools come from the `quotedpart` MCP server and act in the
-person's own QuotedPart account: each estimate is saved as a quote there.
+markup, at several quantities. The tools come from the `quotedpart` MCP server and work in
+the person's own QuotedPart account: they sign in to QuotedPart and allow the assistant once,
+and every estimate is saved as a quote in their shop, priced with that shop's rates.
 
 ## Steps
 
 1. **Get the part.** Ask for a STEP/IGES model (.step, .stp, .iges, .igs) or a PDF drawing,
-   or both. Pass a public link as `file_url`. For a file on the person's computer: when
-   `estimate_price` takes `file_path` (a local server), pass the path; otherwise call
+   or both. Pass a public link as `file_url`. For a file on the person's computer, call
    `create_upload`, PUT the raw bytes to `upload_url` (for example
    `curl -sS --upload-file "<file>" "<upload_url>"`), then pass `upload_id`. Use
    `file_base64` only for a small file when you cannot run a command. Always give `filename`
@@ -26,8 +26,8 @@ person's own QuotedPart account: each estimate is saved as a quote there.
    out: the server uses the drawing's material or the shop default.
 3. **Quantity.** Pass the quantity they gave. If none, leave it out and show the price
    breaks the tool returns, so the setup cost spread over the lot is visible.
-4. **Shop.** Call `list_shops` only when they mention a region, currency or shop, or want to
-   compare. Otherwise the default shop is used.
+4. **Shop.** Parts are priced in the person's own shop. Call `list_shops` only when they ask
+   about its currency, rates or markup.
 5. **Estimate.** Call `estimate_price`. If the result has `status: "reading"` (a drawing is
    still being read), call `get_quote` with the `quote_id` a little later.
 6. **Change it.** To try another material, quantity or process on the same part, call
@@ -35,15 +35,11 @@ person's own QuotedPart account: each estimate is saved as a quote there.
 7. **Report.** Lead with the unit price and line total at the selected quantity, in the
    returned `currency`. Then the cost lines of that break, the other quantities as a short
    table, lead time, and any `checks` or `notes` the tool returned. End with `quote_url`:
-   it opens the quote in the person's QuotedPart account.
+   it opens the quote in the person's QuotedPart account, where they can adjust it and send it.
 
 ## Rules
 
-- The price is an estimate from the rates set up in the person's QuotedPart shop, not a
-  binding quote. Say so once.
-- If a tool reports that the person is not signed in, or the sign-in expired, ask them to
-  sign in to QuotedPart when the assistant prompts (or reconnect the QuotedPart connector).
-  Do not try to price the part another way.
+- The price is an estimate from the shop's own rates, not a quote sent to anyone. Say so once.
 - Report prices exactly as returned. Do not round, convert currency or recompute them.
 - When a part comes back `needs_input` or `failed`, or the tool returns an error, pass its
   message on in one line and say what would fix it (for example re-exporting the STEP file).

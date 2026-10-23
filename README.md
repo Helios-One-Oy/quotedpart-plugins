@@ -5,13 +5,15 @@ machined, turned, laser-cut or 3D-printed part from its STEP/IGES model or PDF d
 style cost breakdown with price breaks by quantity, and open the saved quote in your account.
 
 This repository holds only the plugin packaging. The plugin connects to the hosted QuotedPart MCP
-server at `https://quotedpart.com/mcp` (Streamable HTTP). It requires signing in with an existing
-QuotedPart account (OAuth); the assistant asks you to sign in the first time it uses QuotedPart.
+server at `https://quotedpart.com/mcp` (Streamable HTTP). It needs an existing QuotedPart account,
+linked once (OAuth): you sign in to QuotedPart in the browser and allow the assistant. Each estimate
+is priced with your shop's own rates and saved as a quote in your account. Unlink it any time under
+Integrations in QuotedPart.
 
 | Assistant | Install |
 | --- | --- |
-| Claude Code | `/plugin marketplace add Helios-One-Oy/quotedpart-plugins` then `/plugin install quotedpart@quotedpart` |
-| Codex | `codex plugin marketplace add Helios-One-Oy/quotedpart-plugins` then `codex plugin add quotedpart@quotedpart` |
+| Claude Code | `/plugin marketplace add Helios-One-Oy/quotedpart-plugins`, `/plugin install quotedpart@quotedpart`, then `/mcp` → quotedpart → Authenticate |
+| Codex | `codex plugin marketplace add Helios-One-Oy/quotedpart-plugins`, `codex plugin add quotedpart@quotedpart`, then `codex mcp login quotedpart` |
 | Claude.ai, ChatGPT | Add `https://quotedpart.com/mcp` as a custom connector and sign in (OAuth) |
 | Any MCP client | Streamable HTTP endpoint `https://quotedpart.com/mcp` with MCP authorization (OAuth) |
 

@@ -1,6 +1,8 @@
 # QuotedPart MCP server for Codex without the plugin. Paste into ~/.codex/config.toml
 # (or a trusted project's .codex/config.toml), or run:
 #   codex mcp add quotedpart --url https://quotedpart.com/mcp
+# Then link your QuotedPart account (an existing one; estimates are saved as quotes in it):
+#   codex mcp login quotedpart
 
 [mcp_servers.quotedpart]
 url = "https://quotedpart.com/mcp"

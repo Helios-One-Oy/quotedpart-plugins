@@ -1,17 +1,16 @@
 # QuotedPart plugin for Claude, ChatGPT and Codex
 
-Price a CNC machined part from your AI assistant with your QuotedPart account. Give it a STEP/IGES
-model or a PDF drawing (or a link to one), a material and a quantity, and the QuotedPart tools return a
-job-shop style price breakdown (material, machining, setups, programming, finishing). Each estimate is
-saved as a quote in your account, with a link that opens it there.
+Price a CNC machined part from your AI assistant. Give it a STEP/IGES model or a PDF
+drawing (or a link to one), a material and a quantity, and the QuotedPart tools price it with
+your own shop's rates and return a price breakdown (material, machining, setups, programming,
+finishing). Each estimate is saved as a quote in your QuotedPart account, and its link opens
+the quote there, where you can adjust it and send it.
 
-## Before you start
+It needs an existing QuotedPart account, linked once: in Claude Code run `/mcp`, pick
+`quotedpart` and choose Authenticate, then sign in to QuotedPart in the browser and allow it.
+To unlink, open Integrations in QuotedPart and disconnect it under AI assistants.
 
-You need an existing QuotedPart account. The first time the assistant uses QuotedPart, it opens the
-QuotedPart sign-in page; sign in and allow access. The assistant then works only with your own
-account's shop, rates and quotes. Nothing is priced without signing in.
-
-## Claude Code
+## Install
 
 ```
 /plugin marketplace add Helios-One-Oy/quotedpart-plugins
@@ -35,23 +34,25 @@ codex plugin add quotedpart@quotedpart
 ```
 
 Or add only the MCP server: `codex mcp add quotedpart --url https://quotedpart.com/mcp`
-(see `codex/config.toml`).
+(see `codex/config.toml`). Then link your account with `codex mcp login quotedpart`, which
+opens QuotedPart's sign-in in the browser.
 
-## Claude.ai and ChatGPT (custom connector)
+ChatGPT and other MCP clients that connect to `https://quotedpart.com/mcp` ask you to sign in
+to QuotedPart the same way:
 
-Add the server as a custom connector, then connect it and sign in with your QuotedPart account:
-
-- Claude: https://claude.ai/customize/connectors → **Add custom connector** → `https://quotedpart.com/mcp` → **Connect**
+- Claude (web and desktop): https://claude.ai/customize/connectors → **Add custom connector** → `https://quotedpart.com/mcp` → **Connect**
 - ChatGPT: https://chatgpt.com/plugins → **+** → **Add custom MCP server** → `https://quotedpart.com/mcp`, auth **OAuth** → sign in
+
+Accounts on quotedpart.com can be linked; accounts on the Finnish site (fi.quotedpart.com) can't yet.
 
 ## Tools
 
 | Tool | What it does |
 | --- | --- |
-| `list_shops` | Your shop's pricing setup (region, currency, units) |
-| `list_materials` | Materials for a shop, optionally for one process |
-| `estimate_price` | Price a STEP/IGES model and/or PDF drawing: cost lines, price breaks, lead time, link to the quote in your account |
-| `get_quote` | Current state of one of your quotes (for example after a drawing read finishes) |
+| `list_shops` | Your shop: name, currency, units, and the rates, materials and markup it prices with |
+| `list_materials` | Your shop's materials, optionally for one process |
+| `estimate_price` | Price a STEP/IGES model and/or PDF drawing, saved as a quote in your account: cost lines, price breaks, lead time, quote link |
+| `get_quote` | Current state of a quote (for example after a drawing read finishes) |
 | `update_estimate` | Re-price a part on a quote with another material, quantity or process |
 | `create_upload` | Upload URL for files too large to send inline |
 
@@ -77,10 +78,12 @@ codex -c 'mcp_servers.quotedpart.url="http://127.0.0.1:8787/mcp"'
 non-interactive `codex exec` cannot ask; allow it up front with
 `-c 'mcp_servers.quotedpart.tools.estimate_price.approval_mode="approve"'`. A local file reaches the server through `create_upload` and an HTTP PUT, so
 `codex exec` also needs network access: `--sandbox workspace-write -c sandbox_workspace_write.network_access=true`.
+`codex exec` cannot open a sign-in either, so link the account with `codex mcp login quotedpart` first.
 
 ## Privacy and terms
 
-Parts you price are sent to QuotedPart and saved as quotes in your account. Privacy: https://quotedpart.com/privacy.
+Parts you price are sent to QuotedPart and saved as quotes in your shop. Privacy:
+https://quotedpart.com/privacy (AI assistants and MCP).
 Terms: https://quotedpart.com/terms. Support: support@quotedpart.com.
 
 ## License
