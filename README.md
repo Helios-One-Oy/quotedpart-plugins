@@ -14,6 +14,10 @@ server at `https://quotedpart.com/mcp` (Streamable HTTP, no sign-in needed).
 | Claude.ai, ChatGPT | Add `https://quotedpart.com/mcp` as a custom connector with no authentication |
 | Any MCP client | Streamable HTTP endpoint `https://quotedpart.com/mcp` |
 
+Demo (Claude Code, live server): [media/demo-claude-code.mp4](media/demo-claude-code.mp4)
+
+![Price breakdown view](media/claude-1280-1-bracket-6061-25.png)
+
 Details, tools and options: [plugins/quotedpart/README.md](plugins/quotedpart/README.md).
 
 ## Layout
