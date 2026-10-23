@@ -33,8 +33,10 @@ and every estimate is saved as a quote in their shop, priced with that shop's ra
    still being read), call `get_quote` a little later with the quote's number as the
    result gives it (for example Q-1001) or its `quote_id`.
 6. **Change it.** To try another material, quantity or process on the same part, call
-   `update_estimate` with the quote's number (or `quote_id`). On a quote with several parts,
-   name the part as the result does, or by its line number. Do not upload the file again.
+   `update_estimate` with the quote's number (or `quote_id`). When the quote has more than
+   one part, always pass `part_id`: the part's name as the result gives it, or its line
+   number (1 is the first). If the tool changes nothing and lists the lines instead, pick
+   the line the person meant, or ask them which one. Do not upload the file again.
 7. **Report.** Lead with the unit price and line total at the selected quantity, in the
    returned `currency`. Then the cost lines of that break, the other quantities as a short
    table, lead time, and any `checks` or `notes` the tool returned. Call the quote by its

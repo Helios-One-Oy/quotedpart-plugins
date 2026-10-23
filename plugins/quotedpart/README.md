@@ -53,7 +53,7 @@ Accounts on quotedpart.com can be linked; accounts on the Finnish site (fi.quote
 | `list_materials` | Your shop's materials, optionally for one process |
 | `estimate_price` | Price a STEP/IGES model and/or PDF drawing, saved as a quote in your account: cost lines, price breaks, lead time, quote link |
 | `get_quote` | Current state of a quote (for example after a drawing read finishes) |
-| `update_estimate` | Re-price a part on a quote with another material, quantity or process |
+| `update_estimate` | Re-price a part on a quote with another material, quantity or process (on a quote with several parts, name the part or its line number) |
 | `create_upload` | Upload URL for files too large to send inline |
 
 The bundled `quote-a-part` skill describes the order to use them in.
