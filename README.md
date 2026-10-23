@@ -17,7 +17,14 @@ Integrations in QuotedPart.
 | Claude.ai, ChatGPT | Add `https://quotedpart.com/mcp` as a custom connector and sign in (OAuth) |
 | Any MCP client | Streamable HTTP endpoint `https://quotedpart.com/mcp` with MCP authorization (OAuth) |
 
-Demo, signed in to a QuotedPart account in Claude Code: [media/demo-claude-code.mp4](media/demo-claude-code.mp4)
+Demo, signed in to a QuotedPart account in Claude Code: [media/demo-claude-code.mp4](media/demo-claude-code.mp4) (about 3 minutes; waits while tools run are sped up, and the sign-in fields, email and one-time codes are blurred). It shows, in order:
+
+1. `/mcp` → quotedpart → Authenticate: the QuotedPart sign-in page, then the consent page ("Allow Claude Code to use QuotedPart?").
+2. A STEP file in the working folder priced in 6061 aluminum, 25 pieces: the skill calls `create_upload`, uploads the file with `curl`, then `estimate_price`.
+3. The same part priced again with its PDF drawing: material and finish (anodize) are read from the drawing, and the drawing's open questions are listed.
+4. A re-price of part HX-1042 in 304 stainless on that quote, with `update_estimate`.
+5. A spreadsheet link (`budget.xlsx`): nothing is priced, and the assistant asks for a STEP/IGES/DXF model or PDF drawing instead.
+6. The quote link opened in QuotedPart: the quote with its 3D view, drawing and price breaks.
 
 ![Price view for the HX-1042 mounting bracket in 6061 aluminum, 25 pieces](media/claude-1280-1-bracket-6061-25.png)
 
