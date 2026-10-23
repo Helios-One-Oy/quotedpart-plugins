@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "quotedpart",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Price machined parts from a STEP/IGES model or PDF drawing in your QuotedPart shop, at its own rates: cost breakdown, price breaks by quantity, and the estimate saved as a quote in your account. Needs a QuotedPart account.",
   "author": {
     "name": "Helios One Oy",
@@ -67,7 +67,7 @@
               "description": "Change material without re-upload",
               "prompt": "Price https://quotedpart.com/samples/HX-2210%20drive%20shaft.step in 6061, then tell me what it costs in 304 stainless instead.",
               "tools_triggered": "estimate_price, update_estimate",
-              "expected_behavior": "First estimate in 6061, then update_estimate on the same quote_id with 304 stainless; shows both unit prices side by side."
+              "expected_behavior": "First estimate in 6061, then update_estimate on the same quote (by its number, such as Q-1001, or its quote_id) with 304 stainless; shows both unit prices side by side."
             },
             {
               "description": "List materials for a process",

@@ -16,7 +16,8 @@ and every estimate is saved as a quote in their shop, priced with that shop's ra
 1. **Get the part.** Ask for a STEP/IGES model (.step, .stp, .iges, .igs) or a PDF drawing,
    or both. Pass a public link as `file_url`. For a file on the person's computer, call
    `create_upload`, PUT the raw bytes to `upload_url` (for example
-   `curl -sS --upload-file "<file>" "<upload_url>"`), then pass `upload_id`. Use
+   `curl -sS --upload-file "<file>" "<upload_url>"`), then pass `upload_id` (the
+   `upload_url` itself also works as the `upload_id`). Use
    `file_base64` only for a small file when you cannot run a command. Always give `filename`
    with its extension. A drawing that belongs to a model goes in the `drawing_*` fields of
    the same call (its own `create_upload` for `drawing_upload_id`).
@@ -29,12 +30,15 @@ and every estimate is saved as a quote in their shop, priced with that shop's ra
 4. **Shop.** Parts are priced in the person's own shop. Call `list_shops` only when they ask
    about its currency, rates or markup.
 5. **Estimate.** Call `estimate_price`. If the result has `status: "reading"` (a drawing is
-   still being read), call `get_quote` with the `quote_id` a little later.
+   still being read), call `get_quote` a little later with the quote's number as the
+   result gives it (for example Q-1001) or its `quote_id`.
 6. **Change it.** To try another material, quantity or process on the same part, call
-   `update_estimate` with the `quote_id`. Do not upload the file again.
+   `update_estimate` with the quote's number (or `quote_id`). On a quote with several parts,
+   name the part as the result does, or by its line number. Do not upload the file again.
 7. **Report.** Lead with the unit price and line total at the selected quantity, in the
    returned `currency`. Then the cost lines of that break, the other quantities as a short
-   table, lead time, and any `checks` or `notes` the tool returned. End with `quote_url`:
+   table, lead time, and any `checks` or `notes` the tool returned. Call the quote by its
+   number and parts by name, as the result does, not by internal ids. End with `quote_url`:
    it opens the quote in the person's QuotedPart account, where they can adjust it and send it.
 
 ## Rules
