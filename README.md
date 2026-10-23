@@ -17,7 +17,9 @@ Integrations in QuotedPart.
 | Claude.ai, ChatGPT | Add `https://quotedpart.com/mcp` as a custom connector and sign in (OAuth) |
 | Any MCP client | Streamable HTTP endpoint `https://quotedpart.com/mcp` with MCP authorization (OAuth) |
 
-<!-- Demo video and screenshots: re-recorded against the signed-in flow before release. -->
+Demo, signed in to a QuotedPart account in Claude Code: [media/demo-claude-code.mp4](media/demo-claude-code.mp4)
+
+![Price view for the HX-1042 mounting bracket in 6061 aluminum, 25 pieces](media/claude-1280-1-bracket-6061-25.png)
 
 Details, tools and options: [plugins/quotedpart/README.md](plugins/quotedpart/README.md).
 

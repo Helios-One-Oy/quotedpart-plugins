@@ -48,6 +48,7 @@
         "logo": "./assets/icon.png"
       },
       "review": {
+        "demo_recording_url": "https://github.com/Helios-One-Oy/quotedpart-plugins/blob/main/media/demo-claude-code.mp4",
         "test_cases": {
           "positive": [
             {
