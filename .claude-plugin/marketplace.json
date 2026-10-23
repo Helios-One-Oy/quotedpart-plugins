@@ -5,14 +5,14 @@
     "email": "support@quotedpart.com"
   },
   "metadata": {
-    "description": "QuotedPart plugins for Claude Code: instant CNC machining price estimates.",
+    "description": "QuotedPart plugins for Claude Code: CNC machining price estimates in your QuotedPart account.",
     "version": "0.1.3"
   },
   "plugins": [
     {
       "name": "quotedpart",
       "source": "./plugins/quotedpart",
-      "description": "Instant CNC machining price estimates from a CAD file or drawing, with a price breakdown and a QuotedPart quote link.",
+      "description": "CNC machining price estimates from a CAD file or drawing, saved as quotes in your QuotedPart account (sign-in required).",
       "version": "0.1.3",
       "author": {
         "name": "Helios One Oy",

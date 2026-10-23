@@ -1,9 +1,15 @@
 # QuotedPart plugin for Claude, ChatGPT and Codex
 
-Price a CNC machined part without leaving your AI assistant. Give it a STEP/IGES model or a PDF
-drawing (or a link to one), a material and a quantity, and the QuotedPart tools return a job-shop style
-price breakdown (material, machining, setups, programming, finishing) and a link that
-opens the part on quotedpart.com, where you can adjust it and request the quote.
+Price a CNC machined part from your AI assistant with your QuotedPart account. Give it a STEP/IGES
+model or a PDF drawing (or a link to one), a material and a quantity, and the QuotedPart tools return a
+job-shop style price breakdown (material, machining, setups, programming, finishing). Each estimate is
+saved as a quote in your account, with a link that opens it there.
+
+## Before you start
+
+You need an existing QuotedPart account. The first time the assistant uses QuotedPart, it opens the
+QuotedPart sign-in page; sign in and allow access. The assistant then works only with your own
+account's shop, rates and quotes. Nothing is priced without signing in.
 
 ## Claude Code
 
@@ -33,19 +39,19 @@ Or add only the MCP server: `codex mcp add quotedpart --url https://quotedpart.c
 
 ## Claude.ai and ChatGPT (custom connector)
 
-Add the server as a custom connector with no authentication:
+Add the server as a custom connector, then connect it and sign in with your QuotedPart account:
 
-- Claude: https://claude.ai/customize/connectors → **Add custom connector** → `https://quotedpart.com/mcp`
-- ChatGPT: https://chatgpt.com/plugins → **+** → **Add custom MCP server** → `https://quotedpart.com/mcp`, auth **No authentication**
+- Claude: https://claude.ai/customize/connectors → **Add custom connector** → `https://quotedpart.com/mcp` → **Connect**
+- ChatGPT: https://chatgpt.com/plugins → **+** → **Add custom MCP server** → `https://quotedpart.com/mcp`, auth **OAuth** → sign in
 
 ## Tools
 
 | Tool | What it does |
 | --- | --- |
-| `list_shops` | Pricing setups (region, currency, units) a part can be priced with |
+| `list_shops` | Your shop's pricing setup (region, currency, units) |
 | `list_materials` | Materials for a shop, optionally for one process |
-| `estimate_price` | Price a STEP/IGES model and/or PDF drawing: cost lines, price breaks, lead time, quote link |
-| `get_quote` | Current state of a quote (for example after a drawing read finishes) |
+| `estimate_price` | Price a STEP/IGES model and/or PDF drawing: cost lines, price breaks, lead time, link to the quote in your account |
+| `get_quote` | Current state of one of your quotes (for example after a drawing read finishes) |
 | `update_estimate` | Re-price a part on a quote with another material, quantity or process |
 | `create_upload` | Upload URL for files too large to send inline |
 
@@ -74,7 +80,7 @@ non-interactive `codex exec` cannot ask; allow it up front with
 
 ## Privacy and terms
 
-Parts you price are sent to QuotedPart. Privacy: https://quotedpart.com/privacy.
+Parts you price are sent to QuotedPart and saved as quotes in your account. Privacy: https://quotedpart.com/privacy.
 Terms: https://quotedpart.com/terms. Support: support@quotedpart.com.
 
 ## License

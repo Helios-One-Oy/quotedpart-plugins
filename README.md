@@ -1,22 +1,21 @@
 # QuotedPart plugins
 
-Plugins that connect AI assistants to [QuotedPart](https://quotedpart.com): price a CNC machined,
-turned, laser-cut or 3D-printed part from its STEP/IGES model or PDF drawing, get a job-shop style
-cost breakdown with price breaks by quantity, and open the quote on quotedpart.com.
+Plugins that connect AI assistants to your [QuotedPart](https://quotedpart.com) account: price a CNC
+machined, turned, laser-cut or 3D-printed part from its STEP/IGES model or PDF drawing, get a job-shop
+style cost breakdown with price breaks by quantity, and open the saved quote in your account.
 
 This repository holds only the plugin packaging. The plugin connects to the hosted QuotedPart MCP
-server at `https://quotedpart.com/mcp` (Streamable HTTP, no sign-in needed).
+server at `https://quotedpart.com/mcp` (Streamable HTTP). It requires signing in with an existing
+QuotedPart account (OAuth); the assistant asks you to sign in the first time it uses QuotedPart.
 
 | Assistant | Install |
 | --- | --- |
 | Claude Code | `/plugin marketplace add Helios-One-Oy/quotedpart-plugins` then `/plugin install quotedpart@quotedpart` |
 | Codex | `codex plugin marketplace add Helios-One-Oy/quotedpart-plugins` then `codex plugin add quotedpart@quotedpart` |
-| Claude.ai, ChatGPT | Add `https://quotedpart.com/mcp` as a custom connector with no authentication |
-| Any MCP client | Streamable HTTP endpoint `https://quotedpart.com/mcp` |
+| Claude.ai, ChatGPT | Add `https://quotedpart.com/mcp` as a custom connector and sign in (OAuth) |
+| Any MCP client | Streamable HTTP endpoint `https://quotedpart.com/mcp` with MCP authorization (OAuth) |
 
-Demo (Claude Code, live server): [media/demo-claude-code.mp4](media/demo-claude-code.mp4)
-
-![Price breakdown view](media/claude-1280-1-bracket-6061-25.png)
+<!-- Demo video and screenshots: re-recorded against the signed-in flow before release. -->
 
 Details, tools and options: [plugins/quotedpart/README.md](plugins/quotedpart/README.md).
 
@@ -36,7 +35,7 @@ plugins/quotedpart/
 
 ## Privacy, terms, support
 
-Parts you price are sent to QuotedPart. Privacy: https://quotedpart.com/privacy.
+Parts you price are sent to QuotedPart and saved as quotes in your account. Privacy: https://quotedpart.com/privacy.
 Terms: https://quotedpart.com/terms. Support: support@quotedpart.com.
 
 ## License

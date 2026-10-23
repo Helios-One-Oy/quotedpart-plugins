@@ -7,7 +7,8 @@ description: Price a CNC machined, turned, laser-cut or 3D-printed part with the
 
 QuotedPart prices parts the way a job shop does, from the 3D model and/or the PDF drawing:
 material, machine time per operation, setups, programming, finishing, extra charges and
-markup, at several quantities. The tools come from the `quotedpart` MCP server.
+markup, at several quantities. The tools come from the `quotedpart` MCP server and act in the
+person's own QuotedPart account: each estimate is saved as a quote there.
 
 ## Steps
 
@@ -34,12 +35,15 @@ markup, at several quantities. The tools come from the `quotedpart` MCP server.
 7. **Report.** Lead with the unit price and line total at the selected quantity, in the
    returned `currency`. Then the cost lines of that break, the other quantities as a short
    table, lead time, and any `checks` or `notes` the tool returned. End with `quote_url`:
-   it opens the quote on quotedpart.com, where the person can save it, adjust it and send it.
+   it opens the quote in the person's QuotedPart account.
 
 ## Rules
 
-- The price uses QuotedPart's standard rates for the chosen shop, not a binding quote from
-  a shop. Say so once.
+- The price is an estimate from the rates set up in the person's QuotedPart shop, not a
+  binding quote. Say so once.
+- If a tool reports that the person is not signed in, or the sign-in expired, ask them to
+  sign in to QuotedPart when the assistant prompts (or reconnect the QuotedPart connector).
+  Do not try to price the part another way.
 - Report prices exactly as returned. Do not round, convert currency or recompute them.
 - When a part comes back `needs_input` or `failed`, or the tool returns an error, pass its
   message on in one line and say what would fix it (for example re-exporting the STEP file).
